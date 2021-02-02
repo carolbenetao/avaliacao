@@ -13,10 +13,10 @@ public class CursoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_CURSO")
-    private Long idCurso;
+    private Long curso;
 
     @Column(name = "DS_CURSO")
-    private String nomeCurso;
+    private String nome;
 
     @Column(name = "NR_CARGA_HORARIA")
     private Integer nrCargaHoraria;

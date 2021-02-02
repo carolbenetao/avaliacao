@@ -12,23 +12,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class AlunoService {
 
-    @Autowired
-    private AlunoRepository alunoRepository;
-
-
-    public ResponseEntity gravar(AlunoDTO alunoDTO){
-        AlunoEntity entity = new AlunoEntity();
-        entity.setNomeAluno(alunoDTO.getNome());
-        entity.setCpf(alunoDTO.getCpf());
-
-        //TODO validar se o CPF existe no banco antes de existir, caso exista retornar mensagem de erro
-
-
-
-
-        entity = alunoRepository.save(entity);
-
-        ResultData resultData = new ResultData(HttpStatus.CREATED.value(), "Aluno cadastrado com sucesso", entity.getIdAluno());
-        return ResponseEntity.status(HttpStatus.CREATED).body(resultData);
-    }
+//    @Autowired
+//    private AlunoRepository alunoRepository;
+//
+//
+//    public ResponseEntity gravar(AlunoDTO alunoDTO){
+//        AlunoEntity entity = new AlunoEntity();
+//        entity.setNomeAluno(alunoDTO.getNome());
+//        entity.setCpf(alunoDTO.getCpf());
+//
+//        //TODO validar se o CPF existe no banco antes de existir, caso exista retornar mensagem de erro
+//
+//        if()
+//
+//
+//
+//        entity = alunoRepository.save(entity);
+//
+//        ResultData resultData = new ResultData(HttpStatus.CREATED.value(), "Aluno cadastrado com sucesso", entity.getIdAluno());
+//        return ResponseEntity.status(HttpStatus.CREATED).body(resultData);
+//    }
 }

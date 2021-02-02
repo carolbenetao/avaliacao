@@ -28,15 +28,61 @@ public class TurmaService {
 
     SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
 
-    public List<TurmaDTO> listar(){
+
+
+    public List<TurmaDTO> listar() {
         List<TurmaEntity> listEntity = turmaRepository.findAll();
         List<TurmaDTO> listDTO = new ArrayList<>();
 
-        //TODO implementar a conversão da lista de objetos de TurmaEntity para TurmaDTO e retornar a listDTO preenchida
+        for(TurmaEntity turmaEntity : listEntity){
+            TurmaDTO turmaDTO = new TurmaDTO();
+            turmaDTO.setDtInicio(turmaEntity.getDtInicio());
+            turmaDTO.setDtFim(turmaEntity.getDtFinal());
+
+            CursoEntity cursoEntities = turmaEntity.getCurso();
+              CursoDTO  cursosDTO = new CursoDTO();
+               CursoDTO curso = new CursoDTO();
+
+                curso.setIdCurso(cursoEntities.getCurso());
+                curso.setNome(cursoEntities.getNome());
+                curso.setCargaHoraria(cursoEntities.getNrCargaHoraria());
+
+            turmaDTO.setCurso(cursosDTO);
+
+            List<InstrutorEntity> instrutorEntities = turmaEntity.getInstrutores();
+
+            List<InstrutorDTO> instrutorDTOS = new ArrayList<>();
+
+            for(InstrutorEntity instrutorEntity : instrutorEntities){
+                InstrutorDTO instrutor = new InstrutorDTO();
+                instrutor.setNome(instrutorEntity.getNomeInstrutor());
+                instrutor.setValorHora(instrutorEntity.getValorHora());
+
+                instrutorDTOS.add(instrutor);
+            }
+
+            turmaDTO.setInstrutores(instrutorDTOS);
+
+            List<AlunoEntity> alunoEntities = turmaEntity.getAlunos();
+
+            List<AlunoDTO> alunoDTOS = new ArrayList<>();
+
+            for(AlunoEntity alunoEntity : alunoEntities){
+                AlunoDTO aluno = new AlunoDTO();
+                aluno.setNome(alunoEntity.getNomeAluno());
+                aluno.setCpf(alunoEntity.getCpf());
+
+                alunoDTOS.add(aluno);
+            }
 
 
+            turmaDTO.setAlunos(alunoDTOS);
 
+
+        }
 
         return listDTO;
     }
+
 }
+

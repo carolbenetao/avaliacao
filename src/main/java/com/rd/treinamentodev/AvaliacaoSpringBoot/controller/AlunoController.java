@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AlunoController {
 
-    @Autowired
-    private AlunoService alunoService;
+//    @Autowired
+//    private AlunoService alunoService;
+//
+//    @PostMapping("/aluno")
+//    public ResponseEntity gravar(@RequestBody AlunoDTO alunoDTO){
+//        return alunoService.gravar(alunoDTO);
+//    }
 
-    @PostMapping("/aluno")
-    public ResponseEntity gravar(@RequestBody AlunoDTO alunoDTO){
-        return alunoService.gravar(alunoDTO);
-    }
+
 }
